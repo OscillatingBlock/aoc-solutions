@@ -7,18 +7,24 @@ def sort_input_in_columns(file_name: str):
             parts = line.split("  ")
             column1.append(parts[0])
             column2.append(parts[1])
-    
+
     column1.sort()
-    print(column1)
     column2.sort()
     return [column1, column2]
 
 def compare_columns(column1: list, column2: list):
     if len(column1) != len(column2):
-        return ValueError("Column length should be same")
+        raise ValueError("Column length should be same")
     distances = [abs(int(column1[i]) - int(column2[i])) for i in range(len(column1))]
     return distances
 
-column = sort_input_in_columns("day1_input.txt")
-column1, column2 = column[0] , column[1]
-print(sum(compare_columns(column1, column2)))
+def main():
+    file_name = "day1_input.txt"
+    columns = sort_input_in_columns(file_name)
+    column1, column2 = columns[0], columns[1]
+    total_distance = sum(compare_columns(column1, column2))
+    print(f"The total distance is: {total_distance}")
+
+if __name__ == "__main__":
+    main()
+
