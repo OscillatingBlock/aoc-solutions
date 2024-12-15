@@ -28,5 +28,6 @@ def check(series: list):
                 i += 1
             else:
                 return False
-
-print(check_file("day2_input.txt"))
+                
+if __name__ == "__main__":
+    print(check_file("day2_input.txt"))
